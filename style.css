@@ -1,0 +1,574 @@
+                                                                                                                                                                 /* ======================
+   SomaVita - Heilmassagetherapie
+   Main Stylesheet
+   ====================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --teal: #348597;
+  --teal-dark: #2a6b7a;
+  --text-dark: #333333;
+  --text-medium: #555555;
+  --bg-white: #ffffff;
+  --bg-light: #f0f4f8;
+  --border-light: #e0e0e0;
+  --sidebar-width: 280px;
+  --container-max: 1080px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: #d8dfe8;
+  min-height: 100vh;
+}
+
+/* ---- OUTER WRAPPER ---- */
+.page-wrapper {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  background: var(--bg-white);
+  box-shadow:
+    0 0 60px rgba(52, 133, 151, 0.25),
+    0 0 20px rgba(52, 133, 151, 0.15);
+  min-height: 100vh;
+}
+
+/* ---- HERO / HEADER ---- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  background-color: #2a2a2a;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(40%) brightness(0.75);
+  display: block;
+}
+
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px 50px 40px;
+}
+
+.hero-logo {
+  height: 130px;
+  width: auto;
+}
+
+.hero-tagline {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-align: right;
+  width: 100%;
+  line-height: 1.3;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* ---- NAVIGATION ---- */
+nav.main-nav {
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0 50px;
+}
+
+nav.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+nav.main-nav ul li a {
+  display: block;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--text-medium);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  border-bottom: 3px solid transparent;
+}
+
+nav.main-nav ul li a:hover {
+  color: var(--teal);
+}
+
+nav.main-nav ul li a.active {
+  color: var(--teal);
+  border-bottom: 3px solid var(--teal);
+}
+
+/* ---- MAIN LAYOUT: SIDEBAR + CONTENT ---- */
+.layout {
+  display: flex;
+  align-items: flex-start;
+  padding: 40px 30px 60px;
+  gap: 0;
+}
+
+/* ---- SIDEBAR ---- */
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  padding-right: 30px;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+.sidebar .location-name {
+  color: var(--teal);
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.sidebar .hours-entry {
+  font-size: 14px;
+  color: var(--text-medium);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.sidebar .note {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-medium);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.sidebar-logo {
+  margin-top: 40px;
+  width: 200px;
+}
+
+.sidebar-logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* ---- MAIN CONTENT ---- */
+.content {
+  flex: 1;
+  border-left: 1px solid var(--border-light);
+  padding-left: 40px;
+}
+
+.content h1 {
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.content .subtitle {
+  font-size: 17px;
+  color: var(--text-medium);
+  margin-bottom: 28px;
+}
+
+.content p {
+  font-size: 15px;
+  color: var(--text-medium);
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+.content .highlight-heading {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text-dark);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 28px 0;
+}
+
+.content p strong {
+  color: var(--text-dark);
+}
+
+/* ---- CTA BUTTON ---- */
+.btn-teal {
+  display: inline-block;
+  background-color: var(--teal);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-teal:hover {
+  background-color: var(--teal-dark);
+  transform: translateY(-1px);
+}
+
+/* ---- SOCIAL ---- */
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #3b5998;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+}
+.social-icon.instagram {
+  background-color: #e1306c;
+}
+
+/* ==========================================
+   TEAM PAGE
+   ========================================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+.team-member img {
+  width: 100%;
+  max-width: 300px;
+  height: 340px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.team-member h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.team-member .title {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.team-member ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.team-member ul li {
+  font-size: 14px;
+  color: var(--text-medium);
+  padding: 2px 0;
+}
+
+.team-member ul li::before {
+  content: "- ";
+}
+
+.team-member p {
+  font-size: 14px;
+  color: var(--text-medium);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.team-member blockquote {
+  font-style: italic;
+  color: var(--text-medium);
+  font-size: 14px;
+  margin: 14px 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--teal);
+}
+
+/* ==========================================
+   KONTAKT PAGE
+   ========================================== */
+.contact-info {
+  margin-bottom: 30px;
+}
+
+.contact-info h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 15px;
+  color: var(--text-medium);
+  margin-bottom: 6px;
+}
+
+.contact-info a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.location-block {
+  margin-bottom: 28px;
+}
+
+.location-block h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.parking-note {
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ---- MAP PLACEHOLDER ---- */
+.map-embed {
+  width: 100%;
+  height: 320px;
+  border: none;
+  margin: 20px 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ---- CONTACT FORM ---- */
+.contact-form {
+  margin-top: 30px;
+}
+
+.contact-form h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.contact-form .form-row {
+  margin-bottom: 14px;
+}
+
+.contact-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-dark);
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+
+.contact-form textarea {
+  height: 140px;
+  resize: vertical;
+}
+
+.contact-form .checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: var(--text-medium);
+}
+
+.contact-form .checkbox-row input[type="checkbox"] {
+  width: auto;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+  border-top: 1px solid var(--border-light);
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-white);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: var(--text-medium);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--teal);
+  text-decoration: underline;
+}
+
+.footer-login {
+  font-size: 12px;
+  color: var(--text-medium);
+  text-decoration: none;
+}
+
+.footer-login:hover {
+  color: var(--teal);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+  .hero {
+    height: 280px;
+  }
+
+  .hero-content {
+    padding: 20px 24px 28px;
+  }
+
+  .hero-logo {
+    height: 80px;
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  nav.main-nav {
+    padding: 0 20px;
+  }
+
+  nav.main-nav ul li a {
+    padding: 14px 12px;
+    font-size: 12px;
+  }
+
+  .layout {
+    flex-direction: column;
+    padding: 24px 20px 40px;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 30px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .sidebar-logo {
+    display: none;
+  }
+
+  .content {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .content h1 {
+    font-size: 26px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
