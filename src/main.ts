@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set dynamic current year in footer if we had a copyright line
     const form = document.getElementById('contact-form') as HTMLFormElement | null;
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', () => {
             console.log("Form submission intercepted via TS!");
             // Continue with standard form action...
         });
