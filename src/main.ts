@@ -89,4 +89,72 @@ document.addEventListener('DOMContentLoaded', () => {
       revealElements.forEach((element) => element.classList.add('is-visible'));
     }
   }
+
+  // Mobile slide-in navigation
+  const nav = document.getElementById('navigation');
+  const headerInner = document.querySelector<HTMLElement>('#header .header-inner');
+
+  if (nav && headerInner) {
+    const mq = window.matchMedia('(max-width: 992px)');
+    let menuButton = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle');
+    let backdrop = document.querySelector<HTMLDivElement>('.nav-backdrop');
+
+    if (!menuButton) {
+      menuButton = document.createElement('button');
+      menuButton.type = 'button';
+      menuButton.className = 'mobile-menu-toggle';
+      menuButton.setAttribute('aria-label', 'Menü öffnen');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = 'Menü';
+      headerInner.appendChild(menuButton);
+    }
+
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'nav-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    const closeMenu = () => {
+      document.body.classList.remove('menu-open');
+      menuButton?.setAttribute('aria-expanded', 'false');
+      menuButton && (menuButton.textContent = 'Menü');
+    };
+
+    const openMenu = () => {
+      document.body.classList.add('menu-open');
+      menuButton?.setAttribute('aria-expanded', 'true');
+      menuButton && (menuButton.textContent = 'Schließen');
+    };
+
+    const toggleMenu = () => {
+      if (document.body.classList.contains('menu-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    menuButton.addEventListener('click', toggleMenu);
+    backdrop.addEventListener('click', closeMenu);
+    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    });
+
+    const syncNavMode = () => {
+      if (mq.matches) {
+        document.body.classList.add('mobile-nav-enabled');
+      } else {
+        closeMenu();
+        document.body.classList.remove('mobile-nav-enabled');
+      }
+    };
+
+    syncNavMode();
+    mq.addEventListener('change', syncNavMode);
+  }
 });

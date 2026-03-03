@@ -1,0 +1,23 @@
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))c(t);new MutationObserver(t=>{for(const o of t)if(o.type==="childList")for(const n of o.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&c(n)}).observe(document,{childList:!0,subtree:!0});function m(t){const o={};return t.integrity&&(o.integrity=t.integrity),t.referrerPolicy&&(o.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?o.credentials="include":t.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function c(t){if(t.ep)return;t.ep=!0;const o=m(t);fetch(t.href,o)}})();document.addEventListener("DOMContentLoaded",()=>{document.body.classList.add("js-ready");const l=document.getElementById("contact-form");l&&l.addEventListener("submit",n=>{n.preventDefault();const e=document.getElementById("f-name")?.value??"",i=document.getElementById("f-email")?.value??"",s=document.getElementById("f-tel")?.value??"",r=document.getElementById("f-msg")?.value??"",d=`Name: ${e}
+E-Mail: ${i}
+Tel: ${s}
+
+${r}`;window.location.href=`mailto:somavita.praxis@gmail.com?subject=Kontaktanfrage&body=${encodeURIComponent(d)}`});const a="somavita-cookie-choice";if(!window.localStorage.getItem(a)){document.body.classList.add("cookie-open");const n=document.createElement("div");n.className="cookie-banner",n.innerHTML=`
+      <div class="cookie-inner">
+        <button type="button" class="cookie-close" data-cookie-action="close" aria-label="Cookie-Hinweis schließen">x</button>
+        <h2 class="cookie-title">Cookie-Richtlinie</h2>
+        <p class="cookie-text">Diese Website verwendet Cookies, um dir das bestmögliche Online-Erlebnis zu geben. Lass uns bitte wissen, dass du damit einverstanden bist, indem du weiter unten auf die Option "Ja, ich stimme zu" klickst. Falls du mehr über die von uns verwendeten Cookies herausfinden und eigene Cookie-Einstellungen verwenden möchtest, schau dir bitte unsere Cookie-Richtlinie an.</p>
+        <div class="cookie-links"><a href="impressum.html">Impressum</a> <a href="datenschutz.html">Datenschutzerklärung</a></div>
+        <div class="cookie-cats">
+          <span>Unbedingt erforderlich</span>
+          <span>Funktionell</span>
+          <span>Performance</span>
+          <span>Marketing / Third Party</span>
+        </div>
+        <div class="cookie-actions">
+          <button type="button" class="cookie-btn" data-cookie-action="accept">Alle akzeptieren</button>
+          <button type="button" class="cookie-btn secondary" data-cookie-action="selection">Nur Auswahl akzeptieren</button>
+          <button type="button" class="cookie-btn secondary" data-cookie-action="decline">Alle ablehnen</button>
+        </div>
+      </div>
+    `;const e=i=>{window.localStorage.setItem(a,i),document.body.classList.remove("cookie-open"),n.remove()};n.addEventListener("click",i=>{const r=i.target.closest("[data-cookie-action]");if(!r)return;const d=r.dataset.cookieAction??"selection";e(d)}),document.body.appendChild(n)}const c=document.querySelectorAll(".reveal");if(c.length>0)if("IntersectionObserver"in window){const n=new IntersectionObserver((e,i)=>{e.forEach(s=>{s.isIntersecting&&(s.target.classList.add("is-visible"),i.unobserve(s.target))})},{threshold:.14,rootMargin:"0px 0px -4% 0px"});c.forEach(e=>n.observe(e))}else c.forEach(n=>n.classList.add("is-visible"));const t=document.getElementById("navigation"),o=document.querySelector("#header .header-inner");if(t&&o){const n=window.matchMedia("(max-width: 992px)");let e=document.querySelector(".mobile-menu-toggle"),i=document.querySelector(".nav-backdrop");e||(e=document.createElement("button"),e.type="button",e.className="mobile-menu-toggle",e.setAttribute("aria-label","Menü öffnen"),e.setAttribute("aria-expanded","false"),e.textContent="Menü",o.appendChild(e)),i||(i=document.createElement("div"),i.className="nav-backdrop",document.body.appendChild(i));const s=()=>{document.body.classList.remove("menu-open"),e?.setAttribute("aria-expanded","false"),e&&(e.textContent="Menü")},r=()=>{document.body.classList.add("menu-open"),e?.setAttribute("aria-expanded","true"),e&&(e.textContent="Schließen")},d=()=>{document.body.classList.contains("menu-open")?s():r()};e.addEventListener("click",d),i.addEventListener("click",s),t.querySelectorAll("a").forEach(u=>u.addEventListener("click",s)),document.addEventListener("keydown",u=>{u.key==="Escape"&&s()});const b=()=>{n.matches?document.body.classList.add("mobile-nav-enabled"):(s(),document.body.classList.remove("mobile-nav-enabled"))};b(),n.addEventListener("change",b)}});
