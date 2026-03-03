@@ -933,10 +933,15 @@ body.cookie-open {
    REDESIGN THEME (Medical Glass)
 ══════════════════════════════ */
 body.redesign {
+  --section-gap: 100px;
+  --glass-bg: rgba(255, 255, 255, 0.28);
+  --glass-bg-strong: rgba(255, 255, 255, 0.36);
+  --glass-border: rgba(255, 255, 255, 0.46);
+  --glass-shadow: 0 22px 46px rgba(28, 52, 70, 0.14);
   background:
-    radial-gradient(1200px 700px at 12% 8%, rgba(222, 235, 230, 0.9), transparent 55%),
-    radial-gradient(900px 600px at 86% 18%, rgba(216, 229, 240, 0.75), transparent 55%),
-    linear-gradient(180deg, #f6f3ee 0%, #f9fbfd 100%);
+    radial-gradient(1000px 600px at 14% 16%, rgba(255, 255, 255, 0.4), transparent 55%),
+    radial-gradient(900px 540px at 85% 22%, rgba(255, 255, 255, 0.28), transparent 58%),
+    linear-gradient(135deg, #efe5d7 0%, #dbe8df 48%, #d7e6f2 100%);
   color: #334155;
 }
 
@@ -972,16 +977,16 @@ body.redesign #header .hero-tagline {
 
 body.redesign #navigation,
 body.redesign #footer {
-  background: rgba(255, 255, 255, 0.56);
-  border-color: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(14px) saturate(125%);
-  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border);
+  backdrop-filter: blur(20px) saturate(135%);
+  -webkit-backdrop-filter: blur(20px) saturate(135%);
 }
 
 body.redesign #navigation {
   margin: 12px 0 18px;
-  border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(52, 83, 102, 0.1);
+  border-radius: 24px;
+  box-shadow: var(--glass-shadow);
 }
 
 body.redesign #navigation ul {
@@ -1003,17 +1008,32 @@ body.redesign #navigation ul li a:hover {
 
 body.redesign #layout {
   align-items: stretch;
-  gap: 18px;
+  gap: 30px;
 }
 
 body.redesign #sidebar,
 body.redesign #content {
-  border: 1px solid rgba(255, 255, 255, 0.74);
-  border-radius: 22px;
-  box-shadow: 0 18px 36px rgba(34, 58, 76, 0.1);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(248, 252, 255, 0.54));
-  backdrop-filter: blur(16px) saturate(130%);
-  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  box-shadow: var(--glass-shadow);
+  background: linear-gradient(165deg, var(--glass-bg-strong), var(--glass-bg));
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+body.redesign #sidebar::before,
+body.redesign #content::before {
+  content: '';
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  top: -90px;
+  right: -75px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(203, 224, 236, 0.45), rgba(203, 224, 236, 0));
 }
 
 body.redesign #sidebar {
@@ -1024,18 +1044,43 @@ body.redesign #sidebar {
 body.redesign #content {
   border-left: none;
   border-right: none;
-  padding: 24px;
+  padding: 28px;
+}
+
+body.redesign #content > * {
+  margin: 0;
+}
+
+body.redesign #content > * + * {
+  margin-top: var(--section-gap);
 }
 
 .glass-card {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.78), rgba(246, 251, 255, 0.56));
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 20px;
-  padding: 22px 22px;
-  margin-bottom: 16px;
-  box-shadow: 0 14px 28px rgba(32, 59, 77, 0.09);
-  backdrop-filter: blur(10px) saturate(120%);
-  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  position: relative;
+  background: linear-gradient(160deg, var(--glass-bg-strong), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 28px 28px;
+  margin-bottom: 0;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px) saturate(135%);
+  -webkit-backdrop-filter: blur(20px) saturate(135%);
+  transform: translateY(0);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0));
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 52px rgba(28, 52, 70, 0.18);
 }
 
 #content h1 {
@@ -1062,7 +1107,7 @@ body.redesign #content {
 #content .team-full-quote {
   font-size: 1.02rem;
   line-height: 1.82;
-  max-width: 68ch;
+  max-width: 66ch;
 }
 
 .home-content .glass-card {
@@ -1100,7 +1145,7 @@ body.redesign #content {
 
 .quote-card {
   text-align: center;
-  background: linear-gradient(150deg, rgba(219, 234, 246, 0.62), rgba(233, 242, 235, 0.62));
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.22));
 }
 
 #content p.bold-center {
@@ -1120,8 +1165,10 @@ body.redesign #content {
 
 .btn-book {
   background: linear-gradient(145deg, rgba(70, 143, 157, 0.92), rgba(49, 115, 128, 0.88));
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  box-shadow: 0 12px 26px rgba(30, 92, 103, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 16px 30px rgba(30, 92, 103, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
@@ -1142,7 +1189,7 @@ body.redesign #content {
 }
 
 .team-grid {
-  gap: 16px;
+  gap: 24px;
 }
 
 .team-col {
@@ -1179,7 +1226,24 @@ body.redesign #content {
 .contact-block,
 .contact-form-wrap,
 .map-card {
-  margin-bottom: 16px;
+  margin-bottom: 0;
+}
+
+body.redesign .imprint-section {
+  background: linear-gradient(160deg, var(--glass-bg-strong), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 24px 24px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px) saturate(135%);
+  -webkit-backdrop-filter: blur(20px) saturate(135%);
+  margin-bottom: 0;
+}
+
+body.redesign .imprint-section h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 12px;
 }
 
 .map-card {
@@ -1213,7 +1277,7 @@ body.redesign #content {
 }
 
 #footer {
-  margin-top: 18px;
+  margin-top: var(--section-gap);
   border-radius: 16px;
   box-shadow: 0 10px 22px rgba(36, 64, 82, 0.1);
 }
@@ -1247,6 +1311,10 @@ body.redesign #content {
 }
 
 @media (max-width: 768px) {
+  body.redesign {
+    --section-gap: 44px;
+  }
+
   body.redesign #header {
     height: 330px;
   }
@@ -1256,6 +1324,10 @@ body.redesign #content {
   }
 
   .glass-card {
+    padding: 18px;
+  }
+
+  body.redesign .imprint-section {
     padding: 18px;
   }
 
