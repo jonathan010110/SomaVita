@@ -1,6 +1,8 @@
 // SomaVita – main.ts
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('js-ready');
+
   // Contact form — prevent default and open mailto
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   if (form) {
@@ -63,5 +65,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.body.appendChild(banner);
+  }
+
+  // Micro-animations on scroll
+  const revealElements = document.querySelectorAll<HTMLElement>('.reveal');
+
+  if (revealElements.length > 0) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14, rootMargin: '0px 0px -4% 0px' }
+      );
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+    }
   }
 });
